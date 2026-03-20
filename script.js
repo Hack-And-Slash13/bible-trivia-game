@@ -7,10 +7,15 @@ const answerBtns = document.querySelectorAll(".answer-btn");
 const nextBtn = document.getElementById("next-btn");
 const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
-const response = await fetch("questions.json");
-questions = await response.json();
-questions = shuffleArray(questions);
-showQuestion();
+
+async function loadQuestions() {
+  const response = await fetch("questions.json");
+  questions = await response.json();
+  questions = shuffleArray(questions);
+  showQuestion();
+}
+
+loadQuestions();
 
 function showQuestion() {
   answerBtns.forEach(btn => {
