@@ -1,6 +1,35 @@
-const questions = fetch(questions.json);
-const question = JSON.parse(questions);
-let shuffled_questions = shuffleArray([...questions]);
+let questions = [];
+let currentQuestionIndex = 0;
+
+const questionEl = document.getElementById("question");
+const answerBtns = document.querySelectorAll(".answer-btn");
+const nextBtn = document.getElementById("next-btn");
+
+async function loadQuestions() {
+  const response = await fetch("questions.json");
+  questions = await response.json();
+  questions = shuffleArray(questions);
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[currentQuestionIndex];
+  questionEl.textContent = q.question;
+
+  let answers = [
+    q.correct_answer,
+    q.incorrect_answer1,
+    q.incorrect_answer2,
+    q.incorrect_answer3
+  ];
+
+  answers = shuffleArray(answers);
+
+  answerBtns.forEach((btn, i) => {
+    btn.textContent = answers[i];
+    btn.onclick = () => checkAnswer(btn.textContent, q.correct_answer);
+  });
+}
 
 function checkAnswer(selected, correct) {
   if (selected === correct) {
@@ -10,16 +39,17 @@ function checkAnswer(selected, correct) {
   }
 }
 
-  shuffled_questions.textContent = shuffled_questions.question;
-  let answers = [
-    shuffled_questions.correct_answer,
-    shuffled_questions.incorrect_answer1,
-    shuffled_questions.incorrect_answer2,
-    shuffled_questions.incorrect_answer3
-  ];
-  answers = shuffleArray(answers);
+nextBtn.onclick = () => {
+  currentQuestionIndex++;
+  if (currentQuestionIndex >= questions.length) {
+    alert("Game over!");
+    currentQuestionIndex = 0;
+    questions = shuffleArray(questions);
+  }
+  showQuestion();
+};
 
-answerBtns.forEach((btn, x) => {
-  btn.textContent = answers[x];
-  btn.onclick = () => checkAnswer(btn.textContent, q.correct_answer);
-});
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+loadQuestions();
