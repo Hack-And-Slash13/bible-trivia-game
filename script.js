@@ -16,6 +16,7 @@ async function loadQuestions() {
 }
 
 loadQuestions();
+console.log(${questions})
 
 function showQuestion() {
   answerBtns.forEach(btn => {
