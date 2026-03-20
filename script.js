@@ -1,6 +1,6 @@
 let questions = [];
 let currentQuestionIndex = 0;
-let score = 0
+let score = 0;
 
 const questionEl = document.getElementById("question");
 const answerBtns = document.querySelectorAll(".answer-btn");
@@ -9,7 +9,7 @@ const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
 
 async function loadQuestions() {
-  const response = await fetch("./questions.json")
+  const response = await fetch("./questions.json");
   questions = await response.json();
   questions = shuffleArray(questions);
   showQuestion();
@@ -73,7 +73,7 @@ nextBtn.onclick = () => {
   if (currentQuestionIndex >= questions.length) {
     answerBtns.forEach((btn, i) => {
       btn.style.display = "none";
-    })}
+    })
     feedbackEl.textContent = "";
     questionEl.textContent = `Game over. Your score: ${score}`;
     answerBtns.forEach(btn => btn.disabled = true);
