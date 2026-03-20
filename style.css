@@ -13,7 +13,6 @@ body {
 }
 
 div {
-  width: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,14 +23,6 @@ button {
   font-size: 32px;
 }
 
-#question {
-  margin-bottom: 20px;
-}
-
-#answers {
-  margin-bottom: 20px;
-}
-
 #feedback {
   font-size: 24px;
   font-weight: bold;
@@ -40,11 +31,14 @@ button {
 }
 
 #question {
+  margin-bottom: 20px;
   font-size: 50px;
   font-weight: bold;
+  flex-direction: column;
 }
 
 #answers {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
