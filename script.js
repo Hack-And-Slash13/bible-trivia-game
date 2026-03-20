@@ -64,6 +64,8 @@ function checkAnswer(selected, correct) {
 
 nextBtn.onclick = () => {
   currentQuestionIndex++;
+  if (currentQuestionIndex === questions.length) {
+    nextBtn.textContent = "submit";
   if (currentQuestionIndex > questions.length) {
     feedbackEl.textContent = `Game over. Your score: ${score}`;
     answerBtns.forEach(btn => btn.disabled = true);
