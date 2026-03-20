@@ -18,6 +18,7 @@ async function loadQuestions() {
 function showQuestion() {
   answerBtns.forEach(btn => {
   btn.classList.remove("correct", "wrong");
+  btn.style.display = "flex";
   });
   feedbackEl.textContent = "";
   feedbackEl.classList.remove("correct-feedback", "wrong-feedback");
@@ -65,14 +66,16 @@ function checkAnswer(selected, correct) {
 nextBtn.onclick = () => {
   currentQuestionIndex++;
   if (currentQuestionIndex === questions.length-1) {
-    nextBtn.textContent = "submit";
-  }
+  nextBtn.textContent = "Submit";
+} else {
+  nextBtn.textContent = "Next Question➡️";
+}
   if (currentQuestionIndex >= questions.length) {
     answerBtns.forEach((btn, i) => {
       btn.style.display = "none";
-    }
+    })
     feedbackEl.textContent = "";
-    questionE1.textContent = `Game over. Your score: ${score}`;
+    questionEl.textContent = `Game over. Your score: ${score}`;
     answerBtns.forEach(btn => btn.disabled = true);
     currentQuestionIndex = 0;
     score = 0;
@@ -83,7 +86,6 @@ nextBtn.onclick = () => {
   }
 
   feedbackEl.textContent = "";
-  nextBtn.textContent = "Next Question➡️";
   showQuestion();
 };
 
