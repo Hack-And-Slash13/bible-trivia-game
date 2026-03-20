@@ -24,6 +24,14 @@ button {
   font-size: 32px;
 }
 
+#question {
+  margin-bottom: 20px;
+}
+
+#answers {
+  margin-bottom: 20px;
+}
+
 #feedback {
   font-size: 24px;
   font-weight: bold;
