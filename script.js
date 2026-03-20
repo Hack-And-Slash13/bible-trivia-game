@@ -12,11 +12,11 @@ async function loadQuestions() {
   const response = await fetch("questions.json");
   questions = await response.json();
   questions = shuffleArray(questions);
+  alert(${questions})
   showQuestion();
 }
 
 loadQuestions();
-alert(${questions})
 
 function showQuestion() {
   answerBtns.forEach(btn => {
