@@ -64,10 +64,9 @@ function checkAnswer(selected, correct) {
 
 nextBtn.onclick = () => {
   currentQuestionIndex++;
-  if (currentQuestionIndex >= questions.length) {
+  if (currentQuestionIndex > questions.length) {
     feedbackEl.textContent = `Game over. Your score: ${score}`;
-    feedbackEl.classList.add("correct-feedback");
-    feedbackEl.classList.remove("wrong-feedback");
+    answerBtns.forEach(btn => btn.disabled = true);
     currentQuestionIndex = 0;
     score = 0;
     questions = shuffleArray(questions);
