@@ -83,6 +83,7 @@ nextBtn.onclick = () => {
     nextBtn.textContent = "Play Again";
     scoreEl.textContent = `Score: ${score}`;
     return;
+  }
 
   feedbackEl.textContent = "";
   showQuestion();
