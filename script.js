@@ -4,7 +4,7 @@ let score = 0
 
 const questionEl = document.getElementById("question");
 const answerBtns = document.querySelectorAll(".answer-btn");
-const nextBtn = document.getElementById("next-btn");
+const nextBtn = document.getElementById("next_button");
 const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
 
